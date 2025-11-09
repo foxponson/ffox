@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+main, footer, .photo-grid, nav ul, .about-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* horizontally centers everything */
+  justify-content: flex-start; /* keeps header at top instead of middle */
+  font-family: Arial, serif;
+  line-height: 1.5;
+  color: #bbb;
+  background-color: #06010e;
+  text-align: center;
+  padding: 1rem;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+header {
+  width: 100%;
+  padding: 1rem 0;  
+  text-align: center;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.logo-image {
+  width: auto; /* or whatever fits your design */
+  height: auto;
+  display: flex;
+}
+
+/* Container for star + fox */
+.wrapper {
+  position: relative;       /* Needed for absolute positioning of fox */
+  width: 128px;             /* size of your star image */
+  height: 128px;            /* same as width for square container */
+  margin: 0 auto;        /* center horizontally */
+}
+
+/* Star at the bottom (normal flow) */
+.bottom img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* center the star */
+  width: 40px;   /* smaller star */
+  height: 40px;
+  z-index: 2;
+}
+
+/* Fox on top, spinning */
+.top {
+  position: absolute;       /* position relative to wrapper */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%); /* center in wrapper */
+  pointer-events: none; 
+  
+}
+
+.top img {
+  width: 48px;               /* smaller than wrapper so it sits on star */
+  height: auto;
+  animation: spin 5s linear infinite;
+}
+
+/* Spinning animation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.about-container {
+  width: 100%;
+
+  margin: 0 auto;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.photo-wrapper {
+    width:100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.photo-item {
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+  transform: scale(1.05);
+}
+
+
+footer {
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+
+
